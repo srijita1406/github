@@ -1,0 +1,19 @@
+name: Update Profile
+
+on:
+  push:
+    branches:
+      - overview # Replace "main" with the name of the branch you want to trigger the action on
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build and Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: . # Replace "." with the path to the folder containing your profile content
+          token: ${{ secrets.ACCESS_TOKEN }} # Replace "ACCESS_TOKEN" with the name of your GitHub access token secret
